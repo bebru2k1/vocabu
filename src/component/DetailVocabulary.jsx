@@ -166,7 +166,12 @@ function DetailVocabulary() {
             <Text w={3 / 10} fontSize="sm">
               {item.means}
             </Text>
-            <Box w={1 / 10}>
+            <Box
+              w={1 / 10}
+              d="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Button
                 fontSize="sm"
                 colorScheme="blue"
