@@ -142,14 +142,6 @@ function App() {
             </Tbody>
           ))}
         </Table>
-        <Button
-          colorScheme="blue"
-          variant="link"
-          onClick={() => setIsAddCourse(!isAddCourse)}
-          mb={5}
-        >
-          Thêm chủ đề
-        </Button>
         {isAddCourse && (
           <>
             <Flex align="center" mt={5} mb={5}>
@@ -174,6 +166,14 @@ function App() {
             )}{' '}
           </>
         )}
+        <Button
+          colorScheme="blue"
+          variant="link"
+          onClick={() => setIsAddCourse(!isAddCourse)}
+          mb={5}
+        >
+          Thêm chủ đề
+        </Button>
       </Container>
     </Box>
   );
