@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   useDisclosure,
   Button,
@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormHelperText,
 } from '@chakra-ui/react';
-import { useState } from 'react/cjs/react.development';
+
 import { addVocabulary } from '../config';
 import { v4 as uuidv4 } from 'uuid';
 function BasicModal({ isOpen, onOpen, onClose, course }) {
