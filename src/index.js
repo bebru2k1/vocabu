@@ -1,14 +1,28 @@
-import { ColorModeScript } from '@chakra-ui/react';
+import { ColorModeScript, theme, ChakraProvider } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-
+import DetailVocabulary from './component/DetailVocabulary.jsx';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './component/Header.jsx';
 ReactDOM.render(
   <StrictMode>
-    <ColorModeScript />
-    <App />
+    <Router>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript />
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <App />
+          </Route>
+          <Route path="/vocabulary/:course">
+            <DetailVocabulary />
+          </Route>
+        </Switch>
+      </ChakraProvider>
+    </Router>
   </StrictMode>,
   document.getElementById('root')
 );
