@@ -146,7 +146,7 @@ function App() {
           colorScheme="blue"
           variant="link"
           onClick={() => setIsAddCourse(!isAddCourse)}
-          mb={10}
+          mb={5}
         >
           Thêm chủ đề
         </Button>
