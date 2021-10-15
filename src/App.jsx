@@ -148,7 +148,7 @@ function App() {
               <Input
                 min={3}
                 max={20}
-                placeholder="Nhập tên chủ đề"
+                placeholder="Nhập tên chủ đề. Ex : Topolical"
                 mr={3}
                 value={inputCourse}
                 onChange={e => {
