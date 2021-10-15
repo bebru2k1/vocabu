@@ -103,7 +103,105 @@ function App() {
         <Text as={'h4'} colorScheme="blue">
           Chủ đề của bạn
         </Text>
-        <Table variant="simple" mt={10} size="sm">
+
+        <Box mt={10}>
+          <Flex align="center" mt={10}>
+            <Box
+              textTransform="uppercase"
+              fontSize="sm"
+              fontWeight="bold"
+              color="gray.500"
+              w={4 / 10}
+            >
+              Chủ Đề
+            </Box>
+            <Box
+              textTransform="uppercase"
+              fontSize="sm"
+              fontWeight="bold"
+              color="gray.500"
+              w={2 / 10}
+            >
+              Số Từ
+            </Box>
+            <Box
+              textTransform="uppercase"
+              fontSize="sm"
+              fontWeight="bold"
+              color="gray.500"
+              w={2 / 10}
+            >
+              Hoàn Thành
+            </Box>
+            <Box
+              textTransform="uppercase"
+              fontSize="sm"
+              fontWeight="bold"
+              color="gray.500"
+              w={2 / 10}
+            ></Box>
+          </Flex>
+        </Box>
+
+        {dataVocal?.map(item => (
+          <Box key={`item.name${Math.random()}`} mt={2}>
+            <Flex align="center">
+              <Box
+                w={4 / 10}
+                d="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Button
+                  as={Link}
+                  to={`/vocabulary/${item.name}`}
+                  variant="link"
+                  colorScheme="blue"
+                  fontSize="sm"
+                >
+                  {item.name}
+                </Button>
+              </Box>
+              <Box
+                w={2 / 10}
+                d="flex"
+                alignItems="center"
+                justifyContent="center"
+                fontSize="sm"
+              >
+                {item.data.length}
+              </Box>
+              <Box
+                fontSize="sm"
+                w={2 / 10}
+                d="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                {`${handleCountRemember(item)}/${item.data.length}`}
+              </Box>
+              <Box
+                fontSize="sm"
+                w={2 / 10}
+                d="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Button
+                  fontSize="sm"
+                  variant="link"
+                  colorScheme="blue"
+                  onClick={() => handleDeleteCourse(item.name)}
+                >
+                  Xóa
+                </Button>
+              </Box>
+            </Flex>
+            <Divider mt={2} colorScheme="blue" />
+          </Box>
+        ))}
+
+        {/* <Table variant="simple" mt={10} size="sm">
           <TableCaption>Click vào chủ đề để xem chi tiết</TableCaption>
           <Thead>
             <Tr>
@@ -141,10 +239,10 @@ function App() {
               </Tr>
             </Tbody>
           ))}
-        </Table>
+        </Table> */}
         {isAddCourse && (
           <>
-            <Flex align="center" mt={5} mb={5}>
+            <Flex align="center" mt={5}>
               <Input
                 min={3}
                 max={20}
@@ -170,6 +268,7 @@ function App() {
           colorScheme="blue"
           variant="link"
           onClick={() => setIsAddCourse(!isAddCourse)}
+          mt={5}
           mb={5}
         >
           Thêm chủ đề
