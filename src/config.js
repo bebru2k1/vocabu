@@ -83,6 +83,7 @@ export const deleteVocabulary = (course, vocabularyName) => {
 
 export function speak(message) {
   var msg = new SpeechSynthesisUtterance(message);
+  msg.lang = 'en-US';
   var voices = window.speechSynthesis.getVoices();
   msg.voice = voices[0];
   window.speechSynthesis.speak(msg);
