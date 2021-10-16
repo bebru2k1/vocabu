@@ -54,7 +54,6 @@ function SadGNNB() {
     }
   };
   const handleClickPlayMusic = type => {
-    console.log(type);
     if (type === 'play') {
       musicAudio.current.play();
       setPlayMusic(true);

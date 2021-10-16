@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, Input, Heading } from '@chakra-ui/react';
+import alarmAudio from '../videoWallpper/baothuc.mp3';
 function CountDown() {
   const [time, setTime] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
@@ -9,6 +10,8 @@ function CountDown() {
     minute: 0,
     second: 0,
   });
+  const [isAlarm, setIsArlam] = useState(false);
+  const alarm = useRef();
   const [isCountDown, setIsCountDown] = useState(false);
   const coutDownTime = useRef();
   // const unCountTime = useRef();
@@ -22,6 +25,10 @@ function CountDown() {
   useEffect(() => {
     if (time === 0) {
       clearInterval(coutDownTime.current);
+      if (isCountDown) {
+        setIsArlam(true);
+        alarm.current.play();
+      }
       setIsCountDown(false);
     }
   }, [time]);
@@ -65,14 +72,11 @@ function CountDown() {
     setTimeNotFormat({ ...timeNotFormat, [e.target.name]: +e.target.value });
   };
   const handleCountDownStart = () => {
-    console.log('ahihi');
-
     if (!isCountDown) {
-      console.log('ahihi');
       const timeFormatSecond = formatTimeToSecond(timeNotFormat);
       setTime(timeFormatSecond);
       handleClickPlay();
-      console.log(timeFormatSecond);
+
       setTimeNotFormat({
         hour: 0,
         minute: 0,
@@ -85,6 +89,7 @@ function CountDown() {
   return (
     <Box>
       <Box>
+        <audio src={alarmAudio} ref={alarm} />
         <Heading
           d="inline-block"
           pl={5}
@@ -158,6 +163,22 @@ function CountDown() {
       >
         Start
       </Button>
+      {isAlarm && (
+        <Button
+          color="white"
+          bg="rgba(255, 255, 255, 0.2)"
+          _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
+          onClick={() => {
+            setIsArlam(false);
+            alarm.current.pause();
+            alarm.current.currentTime = 0;
+          }}
+          mt={5}
+          ml={5}
+        >
+          Off Alarm
+        </Button>
+      )}
     </Box>
   );
 }
