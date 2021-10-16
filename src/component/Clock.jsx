@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Box, Heading, Button } from '@chakra-ui/react';
-import { useState, useRef } from 'react/cjs/react.development';
+
 function Clock() {
   const [time, setTime] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
