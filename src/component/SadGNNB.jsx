@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   Box,
   chakra,
@@ -17,7 +17,7 @@ import { FiPlay, FiPause } from 'react-icons/fi';
 import videoWallper1 from '../videoWallpper/wallper1.mp4';
 import audioRain from '../videoWallpper/rain.wav';
 import audioMusic from '../videoWallpper/music.mp3';
-import { useState } from 'react/cjs/react.development';
+
 import Video from './Video';
 import Clock from './Clock';
 // import '@fontsource/raleway/400.css';
