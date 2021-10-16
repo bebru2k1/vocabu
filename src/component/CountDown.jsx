@@ -29,6 +29,7 @@ function CountDown() {
         setIsArlam(true);
         alarm.current.play();
       }
+      setIsPlay(false);
       setIsCountDown(false);
     }
   }, [time]);
@@ -73,10 +74,10 @@ function CountDown() {
   };
   const handleCountDownStart = () => {
     if (!isCountDown) {
+      console.log(isPlay);
       const timeFormatSecond = formatTimeToSecond(timeNotFormat);
       setTime(timeFormatSecond);
       handleClickPlay();
-
       setTimeNotFormat({
         hour: 0,
         minute: 0,
