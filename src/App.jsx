@@ -1,34 +1,19 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
-  Image,
-  chakra,
   Container,
   Heading,
-  useColorMode,
   Button,
   Flex,
   useDisclosure,
   Code,
   Text,
   Divider,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Tfoot,
-  TableCaption,
   Input,
+  Badge,
+  Icon,
 } from '@chakra-ui/react';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from '@chakra-ui/react';
+
 import { Link, Route, Switch } from 'react-router-dom';
 import BasicModal from './component/BasicModalAdd';
 
@@ -37,6 +22,7 @@ import { addCourse, speak } from './config';
 import Banner from './component/Banner';
 import DetailVocabulary from './component/DetailVocabulary';
 import ModalDeleteCourse from './component/ModalDeleteCourse';
+import { FiArrowRight } from 'react-icons/fi';
 
 function App() {
   const [dataVocal, setDataVocal] = useState(null);
@@ -94,6 +80,18 @@ function App() {
         onClose={onCloseModalDeleteCourse}
         nameCourse={nameCourse}
       />
+      <Container mb={10} padding={5} borderRadius={10}>
+        {/* <Box>
+          <Button w={100} as={Link} to="/gnnb" variant="link" fontSize={20}>
+            Wallpaper
+            <Badge colorScheme="green">New</Badge>
+          </Button>
+        </Box> */}
+        <Code colorScheme="red" as={Link} to="/gnnb" d="inline-block">
+          Study With Rain
+        </Code>
+        <Icon as={FiArrowRight}></Icon>
+      </Container>
       <Container>
         <Heading>Vocabulary</Heading>
         <Banner />

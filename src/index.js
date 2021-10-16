@@ -7,18 +7,24 @@ import * as serviceWorker from './serviceWorker';
 import DetailVocabulary from './component/DetailVocabulary.jsx';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './component/Header.jsx';
+import SadGNNB from './component/SadGNNB.jsx';
+
 ReactDOM.render(
   <StrictMode>
     <Router>
       <ChakraProvider theme={theme}>
         <ColorModeScript />
-        <Header />
         <Switch>
           <Route exact path="/">
+            <Header />
             <App />
           </Route>
           <Route path="/vocabulary/:course">
+            <Header />
             <DetailVocabulary />
+          </Route>
+          <Route path="/gnnb">
+            <SadGNNB />
           </Route>
         </Switch>
       </ChakraProvider>

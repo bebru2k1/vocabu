@@ -1,5 +1,12 @@
 import React from 'react';
-import { chakra, Box, Image, useColorMode } from '@chakra-ui/react';
+import {
+  chakra,
+  Box,
+  Image,
+  useColorMode,
+  Button,
+  Badge,
+} from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import logolight from '../booklight.gif';
 import logodark from '../bookdark.gif';
@@ -12,6 +19,7 @@ function Header() {
       <Box w={100} as={Link} to="/">
         <Image src={logo}></Image>
       </Box>
+
       <ColorModeSwitcher
         justifySelf="flex-end"
         colorMode={colorMode}
