@@ -23,7 +23,7 @@ function CountDown() {
     };
   }, []);
   useEffect(() => {
-    if (time === 0) {
+    if (time <= 0) {
       clearInterval(coutDownTime.current);
       if (isCountDown) {
         setIsArlam(true);
@@ -31,9 +31,11 @@ function CountDown() {
       }
       setIsPlay(false);
       setIsCountDown(false);
+      setTime(0);
     }
   }, [time]);
   const formatTime = timer => {
+    if (timer <= 0) return `00:00:00`;
     const getSeconds = `0${timer % 60}`.slice(-2);
     const minutes = `${Math.floor(timer / 60)}`;
     const getMinutes = `0${minutes % 60}`.slice(-2);

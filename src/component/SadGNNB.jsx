@@ -21,7 +21,8 @@ import audioMusic from '../videoWallpper/music.mp3';
 
 import Video from './Video';
 import Clock from './Clock';
-import { music1, music2 } from '../data/dataMusic';
+import Music from './Music';
+
 // import '@fontsource/raleway/400.css';
 function SadGNNB() {
   const [playRain, setPlayRain] = useState(false);
@@ -174,84 +175,12 @@ function SadGNNB() {
             </Slider>
           </Box>
 
-          {music && (
-            <Box>
-              <Button
-                color="rgba(0, 0, 0)"
-                bg="rgba(255, 255, 255, 0.4)"
-                _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
-                pt={10}
-                pb={10}
-                m={2}
-                mt={5}
-                // d="flex"
-              >
-                <Box>
-                  <Avatar size="lg" src={music.author.image} />
-                </Box>
-                <Box p={5}>
-                  <Heading fontSize={20}>{music.name}</Heading>
-                  <Text mt={2}>{music.author.name}</Text>
-                </Box>
-              </Button>
-            </Box>
-          )}
-          <Flex maxW="95%">
-            <Flex flexDirection="column" mt={5} w="50%" justify="flex-start">
-              {music1?.map((item, index) => (
-                <Button
-                  justify="flex-start"
-                  d="flex"
-                  id={index}
-                  variant="link"
-                  color="rgba(0, 0, 0)"
-                  // bg="rgba(255, 255, 255, 0.4)"
-                  // _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
-                  onClick={() => {
-                    setPlayMusic(true);
-                    musicAudio.current.currentTime = item.time;
-                    musicAudio.current.play();
-                    setMusic(item);
-                  }}
-                  pt={2}
-                  pb={2}
-                  m={2}
-                  whiteSpace="nowrap"
-                  overflow="hidden !important"
-                  textOverflow="ellipsis"
-                  w="100%"
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </Flex>
-            <Flex flexDirection="column" mt={5} w="50%" align="flex-start">
-              {music2?.map((item, index) => (
-                <Button
-                  id={index}
-                  variant="link"
-                  color="rgba(0, 0, 0)"
-                  // bg="rgba(255, 255, 255, 0.4)"
-                  // _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
-                  onClick={() => {
-                    setPlayMusic(true);
-                    musicAudio.current.currentTime = item.time;
-                    musicAudio.current.play();
-                    setMusic(item);
-                  }}
-                  pt={2}
-                  pb={2}
-                  m={2}
-                  w="100%"
-                  whiteSpace="nowrap"
-                  overflow="hidden"
-                  textOverflow="ellipsis"
-                >
-                  {item.name}
-                </Button>
-              ))}
-            </Flex>
-          </Flex>
+          <Music
+            music={music}
+            setPlayMusic={setPlayMusic}
+            musicAudio={musicAudio}
+            setMusic={setMusic}
+          />
         </Box>
       </Box>
     </Box>
