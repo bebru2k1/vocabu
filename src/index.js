@@ -23,7 +23,7 @@ ReactDOM.render(
             <Header />
             <DetailVocabulary />
           </Route>
-          <Route path="/gnnb">
+          <Route path="/studywithrain">
             <SadGNNB />
           </Route>
         </Switch>

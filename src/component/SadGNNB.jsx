@@ -15,7 +15,7 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 import { FiPlay, FiPause } from 'react-icons/fi';
-import videoWallper1 from '../videoWallpper/wallper1.mp4';
+
 import audioRain from '../videoWallpper/rain.wav';
 import audioMusic from '../videoWallpper/music.mp3';
 
@@ -30,8 +30,10 @@ function SadGNNB() {
   const [music, setMusic] = useState(null);
   // const bg = useColorModeValue()
 
-  const rainAudio = useRef(new Audio(audioRain));
+  // const rainAudio = useRef(new Audio(audioRain));
+
   const musicAudio = useRef(new Audio(audioMusic));
+  const rainAudio = useRef(null);
   // useEffect(() => {
   //   rainAudio.current.play();
   //   musicAudio.current.play();
@@ -74,6 +76,7 @@ function SadGNNB() {
   };
   return (
     <Box mt={5} color="white">
+      <audio src={audioRain} loop={true} ref={rainAudio} />
       <Video />
       <Box zIndex={2} pos="relative" textAlign="center">
         <Heading
@@ -86,7 +89,7 @@ function SadGNNB() {
           Study With Rain
         </Heading>
         <Clock />
-        <Box maxW={500} m="0 auto">
+        <Box maxW={500} m="0 auto" mt={5}>
           <Box>
             <Flex align="center" justify="center">
               <Text

@@ -87,10 +87,14 @@ function App() {
             <Badge colorScheme="green">New</Badge>
           </Button>
         </Box> */}
-        <Code colorScheme="red" as={Link} to="/gnnb" d="inline-block">
+        <Button
+          rightIcon={<FiArrowRight />}
+          colorScheme="blue"
+          as={Link}
+          to="/studywithrain"
+        >
           Study With Rain
-        </Code>
-        <Icon as={FiArrowRight}></Icon>
+        </Button>
       </Container>
       <Container>
         <Heading>Vocabulary</Heading>
