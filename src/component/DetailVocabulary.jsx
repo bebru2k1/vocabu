@@ -58,12 +58,12 @@ function DetailVocabulary() {
     }
   }, [localStorage.getItem('vocabulary')]);
 
-  const handleClickCheckBox = (nameVocabulary, { isRemember }) => {
-    updateVocabulary(course, nameVocabulary, { isRemember: !isRemember });
+  const handleClickCheckBox = (idVocabulary, { isRemember }) => {
+    updateVocabulary(course, idVocabulary, { isRemember: !isRemember });
     setReRender(`${Math.random()} ${Math.random()}`);
   };
-  const handleClickDelete = vocabulary => {
-    deleteVocabulary(course, vocabulary);
+  const handleClickDelete = id => {
+    deleteVocabulary(course, id);
     setReRender(`${Math.random()} ${Math.random()}`);
   };
   return (
@@ -143,7 +143,7 @@ function DetailVocabulary() {
               <Checkbox
                 isChecked={item.isRemember}
                 onChange={() =>
-                  handleClickCheckBox(item.vocabulary, {
+                  handleClickCheckBox(item.id, {
                     isRemember: item.isRemember,
                   })
                 }
@@ -176,7 +176,7 @@ function DetailVocabulary() {
                 fontSize="sm"
                 colorScheme="blue"
                 variant="link"
-                onClick={() => handleClickDelete(item.vocabulary)}
+                onClick={() => handleClickDelete(item.id)}
               >
                 Xóa
               </Button>

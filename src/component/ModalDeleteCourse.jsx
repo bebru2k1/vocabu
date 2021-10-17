@@ -13,9 +13,9 @@ import {
   Code,
 } from '@chakra-ui/react';
 import { deleteCourse } from '../config';
-function ModalDeleteCourse({ isOpen, onOpen, onClose, nameCourse }) {
+function ModalDeleteCourse({ isOpen, onOpen, onClose, nameCourse, idCourse }) {
   const handleDelete = () => {
-    deleteCourse(nameCourse);
+    deleteCourse(idCourse);
     onClose();
   };
   return (

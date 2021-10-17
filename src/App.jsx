@@ -13,7 +13,7 @@ import {
   Badge,
   Icon,
 } from '@chakra-ui/react';
-
+import { v4 as uuidv4 } from 'uuid';
 import { Link, Route, Switch } from 'react-router-dom';
 import BasicModal from './component/BasicModalAdd';
 
@@ -30,6 +30,7 @@ function App() {
   const [inputCourse, setInputCourse] = useState('');
   const [errorInput, setErrorInput] = useState(null);
   const [nameCourse, setNameCourse] = useState(null);
+  const [idCourse, setIdCourse] = useState(null);
 
   const {
     isOpen: isOpenModalDeleteCourse,
@@ -56,7 +57,7 @@ function App() {
       if (validateInput) {
         setErrorInput(`Có những kí tự đặc biệt ${validateInput.toString()}`);
       } else {
-        addCourse(inputCourse.replace(/\s/g, '').toLowerCase());
+        addCourse(inputCourse.replace(/\s/g, '').toLowerCase(), uuidv4());
         setInputCourse('');
       }
     }
@@ -68,8 +69,9 @@ function App() {
     [dataVocal]
   );
 
-  const handleDeleteCourse = name => {
+  const handleDeleteCourse = (name, id) => {
     setNameCourse(name);
+    setIdCourse(id);
     onOpenModalDeleteCourse();
   };
   return (
@@ -79,6 +81,7 @@ function App() {
         onOpen={onOpenModalDeleteCourse}
         onClose={onCloseModalDeleteCourse}
         nameCourse={nameCourse}
+        idCourse={idCourse}
       />
       <Container mb={10} padding={5} borderRadius={10}>
         {/* <Box>
@@ -193,7 +196,7 @@ function App() {
                   fontSize="sm"
                   variant="link"
                   colorScheme="blue"
-                  onClick={() => handleDeleteCourse(item.name)}
+                  onClick={() => handleDeleteCourse(item.name, item.id)}
                 >
                   Xóa
                 </Button>

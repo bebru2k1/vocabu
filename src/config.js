@@ -1,8 +1,7 @@
 export const addVocabulary = ({ course, data }) => {
   if (localStorage.getItem('vocabulary')) {
     const vocabularyData = JSON.parse(localStorage.getItem('vocabulary'));
-    console.log(vocabularyData);
-    [1, 2].reduce((preVal, CurVal) => preVal + CurVal);
+
     const result = vocabularyData.reduce((preVal, curVal) => {
       if (curVal.name === course) {
         curVal.data = [...curVal.data, data];
@@ -20,9 +19,9 @@ export const addVocabulary = ({ course, data }) => {
   }
 };
 
-export const addCourse = name => {
+export const addCourse = (name, id) => {
   if (!name) return;
-  const newCourse = { name, data: [] };
+  const newCourse = { name, data: [], id };
   if (localStorage.getItem('vocabulary')) {
     const vocabulary = JSON.parse(localStorage.getItem('vocabulary'));
     localStorage.setItem(
@@ -34,14 +33,14 @@ export const addCourse = name => {
   }
 };
 
-export const updateVocabulary = (nameCourse, nameVocabulary, dataUpdate) => {
+export const updateVocabulary = (nameCourse, idVocabulary, dataUpdate) => {
   if (localStorage.getItem('vocabulary')) {
     const vocabulary = JSON.parse(localStorage.getItem('vocabulary'));
 
     vocabulary.reduce((perVal, curVal) => {
       if (curVal.name === nameCourse) {
         let indexDataUpdate = curVal.data.findIndex(
-          item => item.vocabulary === nameVocabulary
+          item => item.id === idVocabulary
         );
         curVal.data[indexDataUpdate] = {
           ...curVal.data[indexDataUpdate],
@@ -57,27 +56,24 @@ export const updateVocabulary = (nameCourse, nameVocabulary, dataUpdate) => {
   }
 };
 
-export const deleteCourse = name => {
+export const deleteCourse = idCourse => {
   if (localStorage.getItem('vocabulary')) {
     const vocabulary = JSON.parse(localStorage.getItem('vocabulary'));
-    const result = vocabulary.filter(item => item.name !== name);
+    const result = vocabulary.filter(item => item.id !== idCourse);
     localStorage.setItem('vocabulary', JSON.stringify(result));
   }
 };
-export const deleteVocabulary = (course, vocabularyName) => {
+export const deleteVocabulary = (course, id) => {
   if (localStorage.getItem('vocabulary')) {
     const vocabulary = JSON.parse(localStorage.getItem('vocabulary'));
-
+    console.log(id);
     // const [result] = vocabulary.filter(item => item.name === course);
     const indexVocal = vocabulary.findIndex(item => item.name === course);
 
-    const result = vocabulary[indexVocal].data.filter(
-      item => item.vocabulary !== vocabularyName
-    );
+    const result = vocabulary[indexVocal].data.filter(item => item.id !== id);
 
     vocabulary[indexVocal].data = result;
     localStorage.setItem('vocabulary', JSON.stringify(vocabulary));
-    // console.log(result);
   }
 };
 

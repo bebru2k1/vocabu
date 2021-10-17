@@ -20,8 +20,6 @@ import { v4 as uuidv4 } from 'uuid';
 function BasicModal({ isOpen, onOpen, onClose, course }) {
   const [formData, setFormData] = useState({
     vocabulary: '',
-    vocalize: '',
-    audio: '',
     means: '',
     isRemember: false,
   });
