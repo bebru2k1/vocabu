@@ -1,131 +1,128 @@
-export const music1 = [
+export const music = [
   {
     name: 'Dusk Till Dawn',
-    time: 0,
+    time: [0, 218],
     author: {
       name: 'ZAYN ft. Sia',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: "Can't Take My Eyes Off You",
-    time: 218,
+    time: [218, 380],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Frankie Valli x Lauryn Hill',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Young Dumb & Broke',
-    time: 380,
+    time: [380, 500],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Khalid',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Perfect',
-    time: 500,
+    time: [500, 692],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Ed Sheeran',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Killing Me Softly',
-    time: 692,
+    time: [692, 858],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Joseph Vincent',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Girls Like You',
-    time: 858,
+    time: [858, 1045],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Maroon 5 ft. Cardi B',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: "Can't Help Falling in Love",
-    time: 1045,
+    time: [1045, 1257],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Cover by Alyssa Baker',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
-];
-
-export const music2 = [
   {
     name: 'You Are The Reason',
-    time: 1257,
+    time: [1257, 1457],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Cover by Alexandra Porat',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Love Me Like You Do',
-    time: 1457,
+    time: [1457, 1677],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'José Audisio',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'All Falls Down',
-    time: 1677,
+    time: [1677, 1832],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Alan Walker ft Noah Cyrus',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'The One That Got Away',
-    time: 1832,
+    time: [1832, 2078],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Brielle Von Hugel',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'One Call Away',
-    time: 2078,
+    time: [2078, 2270],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Charlie Puth',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'As long as you love me',
-    time: 2270,
+    time: [2270, 2437],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'Hobbie Stuart',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
   {
     name: 'Locked Away',
-    time: 2437,
+    time: [2437, 2655],
     author: {
-      name: 'ZAYN ft. Sia',
+      name: 'R City ft. Adam Levine',
       image:
-        'https://www.thewikifeed.com/wp-content/uploads/2021/04/zayn-malik-1.jpg',
+        'https://i.pinimg.com/564x/79/81/59/7981594907a0c8f10d709233d5eddf5e.jpg',
     },
   },
 ];

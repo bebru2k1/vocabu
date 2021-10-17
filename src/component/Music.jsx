@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {
   Box,
   Button,
@@ -13,11 +13,44 @@ import {
   DrawerBody,
   useDisclosure,
 } from '@chakra-ui/react';
-import { music1, music2 } from '../data/dataMusic';
+import { music as musicData } from '../data/dataMusic';
 import { motion } from 'framer-motion';
-function Music({ music, setPlayMusic, musicAudio, setMusic }) {
+import AvatarPlayList from './AvatarPlayList';
+function Music({ music, setPlayMusic, musicAudio, setMusic, playMusic }) {
+  const [timeCurrentAudio, setTimeCurrentAudio] = useState(0);
+  const currentTimeF = useRef();
   const MotionButton = motion(Button);
+  const MotionAvatar = motion(Avatar);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const setCurentTimeAudio = () => {
+    if (!playMusic && currentTimeF.current) {
+      console.log('clear');
+      clearInterval(currentTimeF.current);
+    }
+    console.log(playMusic, !currentTimeF.current);
+    if (playMusic) {
+      currentTimeF.current = setInterval(
+        () => setTimeCurrentAudio(musicAudio.current.currentTime),
+        1000
+      );
+    }
+  };
+  const handleMusic = () => {
+    const result = musicData?.filter(
+      item =>
+        timeCurrentAudio <= item.time[1] && timeCurrentAudio >= item.time[0]
+    );
+    setMusic(result[0]);
+  };
+  useEffect(() => {
+    handleMusic();
+  }, [timeCurrentAudio]);
+
+  useEffect(() => {
+    setCurentTimeAudio();
+  }, [playMusic]);
+
   return (
     <>
       <MotionButton
@@ -31,25 +64,32 @@ function Music({ music, setPlayMusic, musicAudio, setMusic }) {
         PlayList
       </MotionButton>
       {music && (
-        <Box>
-          <Button
-            color="rgba(0, 0, 0)"
-            bg="rgba(255, 255, 255, 0.4)"
-            _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
-            pt={10}
-            pb={10}
-            m={2}
-            mt={5}
-            // d="flex"
+        <Box
+          color="rgba(0, 0, 0)"
+          bg="rgba(255, 255, 255, 0.4)"
+          _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
+          p={5}
+          m="0 auto"
+          mt={5}
+          mb={5}
+          borderRadius={10}
+          // d="flex"
+          // flexDirection="column"
+          maxW={250}
+        >
+          <AvatarPlayList music={music} />
+
+          <Heading
+            fontSize={23}
+            whiteSpace="nowrap"
+            overflow="hidden !important"
+            textOverflow="ellipsis"
+            w="100%"
+            cursor="pointer"
           >
-            <Box>
-              <Avatar size="lg" src={music.author.image} />
-            </Box>
-            <Box p={5}>
-              <Heading fontSize={20}>{music.name}</Heading>
-              <Text mt={2}>{music.author.name}</Text>
-            </Box>
-          </Button>
+            {music.name}
+          </Heading>
+          <Text mt={2}>{music.author.name}</Text>
         </Box>
       )}
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
@@ -59,15 +99,15 @@ function Music({ music, setPlayMusic, musicAudio, setMusic }) {
           <DrawerBody>
             <Flex maxW={[400, 600, 600]} m="0 auto">
               <Flex flexDirection="column" mt={5} w="50%">
-                {music1?.map((item, index) => (
+                {musicData?.slice(0, 7).map((item, index) => (
                   <Box
-                    id={index}
+                    key={index}
                     color="rgba(0, 0, 0)"
                     // bg="rgba(255, 255, 255, 0.4)"
                     _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
                     onClick={() => {
                       setPlayMusic(true);
-                      musicAudio.current.currentTime = item.time;
+                      musicAudio.current.currentTime = item.time[0];
                       musicAudio.current.play();
                       setMusic(item);
                       onClose();
@@ -86,15 +126,15 @@ function Music({ music, setPlayMusic, musicAudio, setMusic }) {
                 ))}
               </Flex>
               <Flex flexDirection="column" mt={5} w="50%">
-                {music2?.map((item, index) => (
+                {musicData?.slice(7, 14).map((item, index) => (
                   <Box
-                    id={index}
+                    key={index}
                     color="rgba(0, 0, 0)"
                     // bg="rgba(255, 255, 255, 0.4)"
                     _hover={{ bg: 'rgba(255, 255, 255, 0.3)' }}
                     onClick={() => {
                       setPlayMusic(true);
-                      musicAudio.current.currentTime = item.time;
+                      musicAudio.current.currentTime = item.time[0];
                       musicAudio.current.play();
                       setMusic(item);
                       onClose();

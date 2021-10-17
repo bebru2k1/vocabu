@@ -17,18 +17,20 @@ function Clock() {
       {isCountDown ? <CountDown /> : <Timer />}
       {isCountDown ? (
         <Button
-          color="white"
+          // color="white"
           mt={5}
-          variant="link"
+          colorScheme="facebook"
+          // variant="link"
           onClick={() => setIsCountDown(false)}
         >
           Timer
         </Button>
       ) : (
         <Button
-          color="white"
+          // color="white"
           mt={5}
-          variant="link"
+          colorScheme="facebook"
+          // variant="link"
           onClick={() => setIsCountDown(true)}
         >
           CountDown

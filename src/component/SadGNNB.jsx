@@ -30,12 +30,18 @@ function SadGNNB() {
   const [music, setMusic] = useState(null);
   // const bg = useColorModeValue()
 
-  const rainAudio = useRef(null);
-  const musicAudio = useRef(null);
+  const rainAudio = useRef(new Audio(audioRain));
+  const musicAudio = useRef(new Audio(audioMusic));
   // useEffect(() => {
   //   rainAudio.current.play();
   //   musicAudio.current.play();
   // }, [rainAudio, musicAudio]);
+  useEffect(() => {
+    return () => {
+      rainAudio.current?.pause();
+      musicAudio.current?.pause();
+    };
+  }, []);
 
   const handleChangeAudioVolumeRain = volume => {
     // console.log(volume);
@@ -112,12 +118,7 @@ function SadGNNB() {
               <Button> Play </Button>
               <Button>Pause</Button>
             </Box> */}
-            <audio
-              src={audioRain}
-              loop={true}
-              // autoPlay={true}
-              ref={rainAudio}
-            ></audio>
+
             <Slider
               maxW={300}
               aria-label="slider-ex-5"
@@ -156,12 +157,7 @@ function SadGNNB() {
                 ></Icon>
               )}
             </Flex>
-            <audio
-              src={audioMusic}
-              loop={true}
-              // autoPlay={true}
-              ref={musicAudio}
-            ></audio>
+
             <Slider
               maxW={300}
               aria-label="slider-ex-5"
@@ -180,6 +176,7 @@ function SadGNNB() {
             setPlayMusic={setPlayMusic}
             musicAudio={musicAudio}
             setMusic={setMusic}
+            playMusic={playMusic}
           />
         </Box>
       </Box>
