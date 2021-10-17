@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   useDisclosure,
   Button,
@@ -27,12 +27,28 @@ function BasicModal({ isOpen, onOpen, onClose, course }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleClickAdd = () => {
-    addVocabulary({ course: course, data: { ...formData, id: uuidv4() } });
+    if (formData.vocabulary !== '') {
+      addVocabulary({ course: course, data: { ...formData, id: uuidv4() } });
+      onClose();
+    }
+    setFormData({
+      vocabulary: '',
+      means: '',
+      isRemember: false,
+    });
+  };
+  const closeModal = () => {
+    setFormData({
+      vocabulary: '',
+      means: '',
+      isRemember: false,
+    });
     onClose();
   };
+  console.log(formData);
   return (
     <>
-      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={closeModal}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Thêm Từ Vựng</ModalHeader>
@@ -62,8 +78,8 @@ function BasicModal({ isOpen, onOpen, onClose, course }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={onClose}>
-              Close
+            <Button colorScheme="red" mr={3} onClick={closeModal}>
+              Hủy
             </Button>
             <Button colorScheme="blue" onClick={handleClickAdd}>
               Thêm
